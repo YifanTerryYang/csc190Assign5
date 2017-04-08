@@ -1,0 +1,12 @@
+
+.button:hover {
+    -fx-background-color: linear-gradient(#ff7f50, #deb887);
+}
+.label{
+    -fx-alignment: top-center;
+    -fx-font-size: 20px;
+}
+
+.gridpane{
+    -fx-background-color: black;
+}
