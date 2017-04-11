@@ -151,11 +151,13 @@ public class MenuPage {
             picView.setImage(image);
         }else{
             try{
-                InputStream is = new BufferedInputStream(new FileInputStream(imgPath));
+                //InputStream is = new BufferedInputStream(new FileInputStream("src\\menusystem\\resources\\" + imgPath));
+                InputStream is = Menu.class.getResourceAsStream("resources/" + imgPath);
                 Image image = new Image(is);
                 picView.setImage(image);
-            }catch(FileNotFoundException ex){ 
+            }catch(NullPointerException ex){ 
                 try{
+                    //InputStream is = new BufferedInputStream(new FileInputStream("src\\menusystem\\resources\\" + "default.jpg"));
                     InputStream is = new BufferedInputStream(new FileInputStream("default.jpg"));
                     Image image = new Image(is);
                     picView.setImage(image);

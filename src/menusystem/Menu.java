@@ -12,6 +12,7 @@ import java.util.LinkedList;
  * @author YangLaptop
  */
 public class Menu {
+    //protected static final String configPath = "src\\menusystem\\resources\\" + "config.txt";
     protected static final String configPath = "config.txt";
     
     public static Dish[] GetMenu() {
@@ -22,10 +23,11 @@ public class Menu {
 
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(configPath);
-
+            //FileReader fileReader = new FileReader(configPath);
+            
             // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            InputStream config = Menu.class.getResourceAsStream("resources/config.txt");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(config));
             
             Dish t = null;
             while((line = bufferedReader.readLine()) != null) {
@@ -68,7 +70,11 @@ public class Menu {
                 new Dish("Welcome!","We don't have dish for you, yet! Ask waiter for more information",-1,"default.jpg"),
             };
         }
-        catch(IOException ex) {
+        catch(IOException exc) {
+            result = new Dish[]{
+                new Dish("Welcome!","We don't have dish for you, yet! Ask waiter for more information",-1,"default.jpg"),
+            };
+        }catch(NullPointerException exe) {
             result = new Dish[]{
                 new Dish("Welcome!","We don't have dish for you, yet! Ask waiter for more information",-1,"default.jpg"),
             };
